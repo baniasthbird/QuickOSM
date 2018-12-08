@@ -28,7 +28,7 @@ from QuickOSM.definitions.osm import QueryType
 from QuickOSM.core.exceptions import QueryFactoryException
 from QuickOSM.core.query_factory import QueryFactory
 
-start_app()
+# start_app()
 
 
 class TestQueryFactory(unittest.TestCase):
