@@ -39,8 +39,8 @@ install:
   - sleep 10
   - docker exec -it qgis-testing-environment sh -c "qgis_setup.sh QuickOSM"
 
-#   - docker exec -it qgis-testing-environment sh -c "rm -f  /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/QuickOSM"
-#   - docker exec -it qgis-testing-environment sh -c "ln -s /tests_directory/ /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/inasafe"
+  - docker exec -it qgis-testing-environment sh -c "rm -f  /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/QuickOSM"
+  - docker exec -it qgis-testing-environment sh -c "ln -s /tests_directory/ /root/.local/share/QGIS/QGIS3/profiles/default/python/plugins/QuickOSM"
 
 #   - docker exec -it qgis-testing-environment sh -c "pip3 install -r /tests_directory/REQUIREMENTS.txt"
 #   - docker exec -it qgis-testing-environment sh -c "pip3 install -r /tests_directory/REQUIREMENTS_TESTING.txt"
