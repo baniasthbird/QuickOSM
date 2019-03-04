@@ -8,6 +8,7 @@ env:
   matrix:
     - QGIS_VERSION_TAG=latest
     - QGIS_VERSION_TAG=release-3_4
+    - QGIS_VERSION_TAG=release-3_6
 
 language: python
 
@@ -52,11 +53,6 @@ script:
 #   - make flake8
 
 notifications:
-  irc:
-    channels:
-      - "irc.freenode.org#inasafe"
-    use_notice: true
-
   email:
     - etienne.trimaille@gmail.com
 
