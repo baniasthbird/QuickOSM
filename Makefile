@@ -31,39 +31,9 @@ i18n_4_compile:
 	@lrelease i18n/QuickOSM_ru.ts -qm i18n/QuickOSM_ru.qm
 	@lrelease i18n/QuickOSM_zh-TW.ts -qm i18n/QuickOSM_zh-TW.qm
 
-main_window:
-	@echo pyuic5 main_window.ui > ui/main_window.py
-	@pyuic5 ui/main_window.ui > ui/main_window.py
-
-quick_query:
-	@echo pyuic5 ui/quick_query.ui > ui/quick_query.py
-	@pyuic5 ui/quick_query.ui > ui/quick_query.py
-
-osm_file:
-	@echo pyuic5 ui/osm_file.ui > ui/osm_file.py
-	@pyuic5 ui/osm_file.ui > ui/osm_file.py
-
-query:
-	@echo pyuic5 ui/query.ui > ui/query.py
-	@pyuic5 ui/query.ui > ui/query.py
-
-save_query:
-	@echo pyuic5 ui/save_query.ui > ui/save_query.py
-	@pyuic5 ui/save_query.ui > ui/save_query.py
-
-generate_ui: main_window quick_query osm_file query save_query
-
 clean_pyc:
 	@echo "Cleaning python files"
 	@find . -name "*.pyc" -type f -delete
-
-clean_ui:
-	@echo "Cleaning UI files"
-	@find . -name "*.ui" -type f -delete
-
-clean_test:
-	@echo "Cleaning tests files"
-	@find . -name test -exec rm -rf {} \;
 
 # Run pep8 style checking
 #http://pypi.python.org/pypi/pep8

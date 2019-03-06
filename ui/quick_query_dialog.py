@@ -51,58 +51,6 @@ class QuickQueryWidget(QuickOSMWidget, Ui_ui_quick_query):
         self.setupUi(self)
         self.init()
 
-        # Setup UI
-
-        # Query type
-        self.cb_query_type.addItem(tr('In'), 'in')
-        self.cb_query_type.addItem(tr('Around'), 'around')
-        self.cb_query_type.addItem(tr('Canvas Extent'), 'canvas')
-        self.cb_query_type.addItem(tr('Layer Extent'), 'layer')
-        self.cb_query_type.addItem(tr('Not Spatial'), 'attributes')
-
-        # self.cb_query_type.setItemIcon(0, QIcon(resources_path('in.svg')))
-        # self.cb_query_type.setItemIcon(1, QIcon(resources_path('around.svg')))
-        # self.cb_query_type.setItemIcon(2, QIcon(resources_path('map_canvas.svg')))
-        # self.cb_query_type.setItemIcon(3, QIcon(resources_path('extent.svg')))
-        # self.cb_query_type.setItemIcon(4, QIcon(resources_path('mIconTableLayer.svg')))
-
-        self.cb_query_type.currentIndexChanged.connect(self.query_type_updated)
-
-        self.label_progress.setText("")
-        self.lineEdit_filePrefix.setDisabled(True)
-        # self.activate_extent_layer()
-
-        # connect
-        self.pushButton_runQuery.clicked.connect(self.run_query)
-        self.pushButton_showQuery.clicked.connect(self.show_query)
-        self.comboBox_key.editTextChanged.connect(self.key_edited)
-        self.pushButton_mapFeatures.clicked.connect(self.open_map_features)
-        self.buttonBox.button(QDialogButtonBox.Reset).clicked.connect(
-            self.reset_form)
-
-        # Setup auto completion
-        map_features_json_file = join(
-            dirname(dirname(abspath(__file__))), 'mapFeatures.json')
-
-        if isfile(map_features_json_file):
-            with open(map_features_json_file) as f:
-                self.osmKeys = load(f)
-                keys = list(self.osmKeys.keys())
-                keys.append('')  # All keys request #118
-                keys.sort()
-                keys_completer = QCompleter(keys)
-                self.comboBox_key.addItems(keys)
-                self.comboBox_key.setCompleter(keys_completer)
-                self.comboBox_key.completer().setCompletionMode(
-                    QCompleter.PopupCompletion)
-                self.comboBox_key.lineEdit().setPlaceholderText(tr('Query on all keys'))
-
-        self.comboBox_value.lineEdit().setPlaceholderText(tr('Query on all values'))
-        self.key_edited()
-
-        self.query_type_updated()
-        self.init_nominatim_autofill()
-
     def reset_form(self):
         self.comboBox_key.setCurrentIndex(0)
         self.comboBox_value.setCurrentIndex(0)
